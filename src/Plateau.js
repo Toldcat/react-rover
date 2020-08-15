@@ -6,7 +6,7 @@ const Plateau = ({ size, positionX, positionY, direction }) => {
 
   useEffect(() => {
     setTable(generateTable())
-  }, [size, positionX, positionY])
+  }, [size, positionX, positionY, direction])
 
   const renderRow = (y) => {
     let tiles = []
