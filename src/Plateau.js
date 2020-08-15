@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Square from './Square'
 
-const Plateau = ({ size, positionX, positionY, direction }) => {
+const Plateau = ({ size, positionX, positionY, direction, instructions }) => {
   const [table, setTable] = useState(null)
 
   useEffect(() => {
