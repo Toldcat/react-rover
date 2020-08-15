@@ -18,51 +18,46 @@ const App = () => {
     const upperLimit = size - 1
     const lowerLimit = 0
 
+    //if no instructions are provided - send an alert
     if (instructions.length === 0) {
       alert('No more moves left')
       return
     }
 
+    //what to do if M instruction is passed
     if (instructions[0] === 'M') {
       //if facing north, move up
       if (direction === 0 && positionY !== upperLimit) {
         setPositionY(positionY + 1)
-        let newInstructions = instructions.slice(1)
-        setInstructions(newInstructions)
+        setInstructions(instructions.slice(1))
         //if facing east, move to the right
       } else if (direction === 1 && positionX !== upperLimit) {
         setPositionX(positionX + 1)
-        let newInstructions = instructions.slice(1)
-        setInstructions(newInstructions)
+        setInstructions(instructions.slice(1))
         //if facing south, move down
       } else if (direction === 2 && positionY !== lowerLimit) {
         setPositionY(positionY - 1)
-        let newInstructions = instructions.slice(1)
-        setInstructions(newInstructions)
+        setInstructions(instructions.slice(1))
         //if facing west, move left
       } else if (direction === 3 && positionX !== lowerLimit) {
         setPositionX(positionX - 1)
-        let newInstructions = instructions.slice(1)
-        setInstructions(newInstructions)
+        setInstructions(instructions.slice(1))
         //if the rover is at the boundary, ignore movement
       } else {
-        let newInstructions = instructions.slice(1)
-        setInstructions(newInstructions)
+        setInstructions(instructions.slice(1))
       }
 
-      //roate left
+      //rotate left
     } else if (instructions[0] === 'L') {
       let newDirection = direction + 4 - 1
       setDirection(newDirection % 4)
-      let newInstructions = instructions.slice(1)
-      setInstructions(newInstructions)
+      setInstructions(instructions.slice(1))
 
       //rotate right
     } else {
       let newDirection = direction + 1
       setDirection(newDirection % 4)
-      let newInstructions = instructions.slice(1)
-      setInstructions(newInstructions)
+      setInstructions(instructions.slice(1))
     }
   }
 
@@ -103,7 +98,6 @@ const App = () => {
         <label htmlFor='instructions'>Instructions</label>
         <input
           name='instructions'
-          pattern='[LRM]'
           placeholder='Instructions - a combination of L - left, R - right and M - move'
           type='text'
           required
