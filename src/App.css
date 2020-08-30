@@ -1,14 +1,30 @@
+body {
+  height: 100%;
+}
+
 .app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 50px;
 }
 
-.inputs {
-  width: 30%;
+.input-container {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.input-group {
   display: flex;
   flex-direction: column;
+  width: 280px;
+}
+
+.instructions-container {
+  display: flex;
+  margin-top: 50px;
 }
 
 .heading {
@@ -16,11 +32,17 @@
   font-size: 22px;
   text-align: center;
   text-transform: uppercase;
-  font: 22px sans-serif;
+  font: 32px sans-serif;
+  padding: 30px;
 }
 
 label {
   text-align: center;
+  font-size: large;
+  font-family: sans-serif;
+  text-transform: lowercase;
+  padding-bottom: 5px;
+  color: rosybrown;
 }
 
 button {

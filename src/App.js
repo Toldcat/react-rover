@@ -63,48 +63,58 @@ const App = () => {
 
   return (
     <div className='app'>
-      <h1 className='heading'>Mars Rover Challenge</h1>
-      <div className='inputs'>
-        <label htmlFor='grid'>Grid Size</label>
-        <input
-          name='grid'
-          type='number'
-          max='9'
-          placeholder='Provide a number (maximum of 9)'
-          required
-          onChange={(e) => {
-            if (e.target.value <= 9) {
-              setSize(Number(e.target.value))
-            } else {
-              setSize('9')
-              e.target.value = Number(9)
-            }
-          }}
-        />
+      <h1 className='heading'>Mars Rover Control Panel</h1>
+      <div className='input-container'>
+        <div className='input-group'>
+          <label htmlFor='grid'>Grid Size</label>
+          <input
+            name='grid'
+            type='number'
+            max='9'
+            placeholder='Provide a number (maximum of 9)'
+            required
+            onChange={(e) => {
+              if (e.target.value <= 9) {
+                setSize(Number(e.target.value))
+              } else {
+                setSize('9')
+                e.target.value = Number(9)
+              }
+            }}
+          />
+        </div>
+        <div className='input-group'>
+          <label htmlFor='position'>Starting Position</label>
+          <input
+            name='position'
+            type='text'
+            maxLength='3'
+            placeholder='Starting position and heading (e.g. 22N)'
+            required
+            onChange={(e) => {
+              setPositionX(Number(e.target.value.split('')[0]))
+              setPositionY(Number(e.target.value.split('')[1]))
+              setDirection(compass.indexOf(e.target.value.split('')[2]))
+            }}
+          />
+        </div>
+      </div>
+      <div className='instructions-container'>
+        <div className='input-group'>
+          <label htmlFor='instructions'>Instructions</label>
+          <input
+            name='instructions'
+            placeholder='Instructions - a combination of L - left, R - right and M - move'
+            type='text'
+            title={`Intructions should consist of letters "M", "L" & "R"`}
+            required
+            onChange={(e) => setInstructions(e.target.value.split(''))}
+          />
 
-        <label htmlFor='position'>Starting Position</label>
-        <input
-          name='position'
-          type='text'
-          maxLength='3'
-          placeholder='Starting position and heading (e.g. 22N)'
-          required
-          onChange={(e) => {
-            setPositionX(Number(e.target.value.split('')[0]))
-            setPositionY(Number(e.target.value.split('')[1]))
-            setDirection(compass.indexOf(e.target.value.split('')[2]))
-          }}
-        />
-        <label htmlFor='instructions'>Instructions</label>
-        <input
-          name='instructions'
-          placeholder='Instructions - a combination of L - left, R - right and M - move'
-          type='text'
-          required
-          onChange={(e) => setInstructions(e.target.value.split(''))}
-        />
-
-        <button onClick={moveRover}>GO!</button>
+          <button onClick={moveRover} disabled={instructions.length === 0}>
+            GO!
+          </button>
+        </div>
       </div>
 
       <Plateau

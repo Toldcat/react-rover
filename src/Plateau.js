@@ -11,7 +11,7 @@ const Plateau = ({ size, positionX, positionY, direction }) => {
   const renderRow = (y) => {
     let tiles = []
     for (let x = 0; x < size; x++) {
-      let hasRover = x == positionX && y == positionY
+      let hasRover = x === positionX && y === positionY
       tiles.push(
         <Square key={[x, y]} direction={direction} hasRover={hasRover} />
       )
