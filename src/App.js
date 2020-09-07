@@ -54,7 +54,7 @@ const App = () => {
       setInstructions(instructions.slice(1))
 
       //rotate right
-    } else {
+    } else if (instructions[0] === 'R') {
       let newDirection = direction + 1
       setDirection(newDirection % 4)
       setInstructions(instructions.slice(1))
