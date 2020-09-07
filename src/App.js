@@ -58,6 +58,9 @@ const App = () => {
       let newDirection = direction + 1
       setDirection(newDirection % 4)
       setInstructions(instructions.slice(1))
+      //ignore letters other than LMR
+    } else {
+      setInstructions(instructions.slice(1))
     }
   }
 
